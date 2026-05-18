@@ -13,18 +13,16 @@ def agregar_estudiante(lista_estudiantes, contador):
         id_estudiante = int(input("Ingrese el ID del estudiante (solo números): "))
         nombre = input("Ingrese el nombre completo del estudiante: ")
         
-        # Sentencia de repetición y decisión para validar si el ID ya existe
         for est in lista_estudiantes:
             if est['id'] == id_estudiante:
                 print("Error: Ya existe un estudiante con ese ID.")
                 return contador
                 
-        # Creación del registro y agregado a la lista
         nuevo_estudiante = {"id": id_estudiante, "nombre": nombre}
         lista_estudiantes.append(nuevo_estudiante)
         
         print(f"\n[ÉXITO] Estudiante '{nombre}' agregado correctamente.")
-        return contador + 1 # Actualización de la variable de conteo
+        return contador + 1 
     except ValueError:
         print("\n[ERROR] El ID debe ser un valor numérico entero.")
         return contador
@@ -32,19 +30,17 @@ def agregar_estudiante(lista_estudiantes, contador):
 def mostrar_estudiantes(lista_estudiantes, contador):
     print("\n--- LISTA DE ESTUDIANTES ---")
     print(f"Total de registros: {contador}")
-    
-    # Sentencia de decisión simple
+
     if contador == 0:
         print("No hay estudiantes registrados en el sistema.")
     else:
-        # Iteración ascendente sobre la lista
         for est in lista_estudiantes:
             print(f"ID: {est['id']} | Nombre: {est['nombre']}")
 
 def buscar_estudiante(lista_estudiantes):
     try:
         id_buscar = int(input("Ingrese el ID del estudiante a buscar: "))
-        encontrado = False # Uso especial de variable: Bandera
+        encontrado = False 
         
         for est in lista_estudiantes:
             if est['id'] == id_buscar:
@@ -58,17 +54,16 @@ def buscar_estudiante(lista_estudiantes):
         print("\n[ERROR] El ID a buscar debe ser un valor numérico.")
 
 def main():
-    # Inicialización de estructuras y variables especiales
     estudiantes = [] 
     total_estudiantes = 0 
-    bandera_salir = False # Condición para el bucle
+    bandera_salir = False 
     
-    # Sentencia de repetición condicionada al comienzo
+    
     while not bandera_salir:
         mostrar_menu()
         opcion = input("Seleccione una opción (1-4): ")
         
-        # Sentencia de decisión múltiple (casos)
+        
         if opcion == '1':
             total_estudiantes = agregar_estudiante(estudiantes, total_estudiantes)
         elif opcion == '2':
@@ -77,7 +72,7 @@ def main():
             buscar_estudiante(estudiantes)
         elif opcion == '4':
             print("\nGuardando datos y cerrando el sistema. ¡Hasta pronto!")
-            bandera_salir = True # Cambia el estado para salir
+            bandera_salir = True 
         else:
             print("\n[ERROR] Opción no válida. Ingrese un número del 1 al 4.")
 
