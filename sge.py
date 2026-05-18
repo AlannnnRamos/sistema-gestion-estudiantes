@@ -17,7 +17,7 @@ def agregar_estudiante(lista_estudiantes, contador):
             if est['id'] == id_estudiante:
                 print("Error: Ya existe un estudiante con ese ID.")
                 return contador
-                
+            
         nuevo_estudiante = {"id": id_estudiante, "nombre": nombre}
         lista_estudiantes.append(nuevo_estudiante)
         
